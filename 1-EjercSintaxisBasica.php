@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
 1- Declarar 5 variables numéricas. (1,2,3,4,5)
 2- Realizar la suma de todas ellas y almacenar el resultado en la variable $total
@@ -30,6 +30,7 @@ $num2 = 2;
 $num3 = 3;
 $num4 = 4;
 $num5 = 5; 
+
 
 echo '$num1 = 1;
 $num2 = 2;
