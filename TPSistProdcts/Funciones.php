@@ -44,20 +44,30 @@
     function tablaOut($f){
         $filas=[];
         for ($n=0; $n < $f; $n++) { 
-            
+            /* VALIDACIÓN DE SEGURIDAD 
+            Guiado por: https://www.baulphp.com/prevenir-la-inyeccion-sql-en-php-ejemplo-completo/
+             */
+            $codigo = filter_var($_POST["codigo"][$n],FILTER_SANITIZE_NUMBER_INT);
+            $descripcion = filter_var($_POST["descripcion"][$n],FILTER_SANITIZE_STRING);
+            $cantidad = filter_var($_POST["cantidad"][$n],FILTER_SANITIZE_NUMBER_INT);
+            $precio = filter_var($_POST["precio"][$n],FILTER_SANITIZE_NUMBER_INT);
+            $impuesto = filter_var($_POST['impuesto'],FILTER_SANITIZE_NUMBER_INT)/100+1;
+
+            $subtotal[$n]= intval($precio)*intval($cantidad)*(intval($impuesto));
+
             $filas[$n] = 
                 '<tr>
                     <td>
-                        '.$_POST["codigo"][$n].'
+                        '.$codigo.'
                         </td>
                     <td>
-                        '.$_POST["descripcion"][$n].'
+                        '.$descripcion.'
                         </td>
                     <td>
-                        '.$_POST["cantidad"][$n].'
+                        '.$cantidad.'
                         </td>
                     <td>
-                        '.intval($_POST["precio"][$n])*intval($_POST["cantidad"][$n])*(intval($_POST['impuesto'])/100+1) .'
+                        '. $subtotal[$n] .'
                         </td>
                 </tr>';
 
@@ -77,12 +87,21 @@
                         Cantidad
                     </th>
                     <th scope="col">
-                        Precio Total
+                        Importe
                     </th>
                 </tr>
             </thead>
             <tbody id="tabla" cantFilas= '.$n.'>
                 '.implode($filas).'
+                <tr class="bg-secondary">
+                    
+                
+                    <td></td>
+                    <td></td>
+                    <td><b>Total:</b></td>
+
+                    <td>'.array_sum($subtotal).'</td>
+                </tr>
             </tbody>
         </table>';
     };
