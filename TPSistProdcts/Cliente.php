@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body class="container">
-    <br>
-    <h1>Calculadora de Facturación TP Integrador Joel Kukin</h1>
-    <br>
-    <div class="container px-auto bg-dark text-white border border-dark p-3 rounded-lg">
+
+<br>
+<h1>Carrito De Compras</h1> 
+
+<br>
+<div class="container px-auto bg-dark text-white border border-dark p-3 rounded-lg">
 
     <form action="Servidor.php" method="post" name="formulario" class="mx-auto w-100">
     <div class="row p-0">
@@ -29,7 +31,8 @@
             
         </label>
 
- 
+
+        <!-- INPUT PROVINCIA -->
         <label class=" col py-1" for="provincia">
             
                 <span class="ml-auto">
@@ -40,36 +43,36 @@
                     <option value="20">impuesto 2 (impuesto 20%)</option>
                     <option value="30">impuesto 3 (impuesto 30%)</option>
                 </select>
-              
+            
             </label>
     </div>
-        <div class="col"></div>
-        <!-- INPUT PROVINCIA -->
+    <div class="col"></div>
 
-        <!-- INPUT DETALLE -->
-        <label class="d-block w-100 my-0" for="detalle" id="detalle"><br>
-            Detalle:<br>
-                <?php
-                    /* llamar funciones */
-                    require 'Funciones.php';
-                    /* Declaración de Variables */
+    <!-- INPUT DETALLE -->
+    <label class="d-block w-100 my-0" for="detalle" id="detalle"><br>
+        Detalle:<br>
+            <?php
+                /* llamar funciones */
+                require 'Funciones.php';
+                /* Declaración de Variables */
 
-                    $filas= 1;
+                $filas= 1;
 
-                    /* Declaración de Funciones */
-                    tablaIn(1)
-                ?>
-            <div id="extras">
-            </label>
+                /* Declaración de Funciones */
+                tablaIn(1)
+            ?>
+        <!-- <div id="extras"> -->
+        </label>
 
-        <!-- BOTONES -->
-        <input type="hidden" id="cantFilas" name="cantFilas" value="1" >
-        <input type="submit" class="btn btn-primary btn-sm rounded-pill">
-        <input type="button" value="Nuevo Producto" onclick="agregProduct()" class="btn btn-primary btn-sm rounded-pill">
+    <!-- BOTONES -->
+    <input type="hidden" id="cantFilas" name="cantFilas" value="1" >
+    <input type="submit" class="btn btn-primary btn-sm rounded-pill">
+    <input type="button" value="Nuevo Producto" onclick="agregProduct()" class="btn btn-primary btn-sm rounded-pill">
 
     </form>
 </div>
-
+<br>
+<h2>TP Integrador de Joel Kukin</h2>
     <!-- JAVASCRIPT -->
     <script>
     function agregProduct(){

@@ -1,6 +1,6 @@
 
 <?php
-    /* Abstracción Modelo Tabla */
+    /* CONSTRUCTOR TABLA DE ENTRADA DE DATOS */
     function tablaIn($c){
         $tabla=[];
         for ($n=0; $n < $c; $n++) { 
@@ -24,7 +24,7 @@
 
         }
 
-        /* TABLA */
+        /* PLANTILLA DE LA TABLA */
         print '
         <table class= "table table-dark text-white rounded container" >
         <thead>
@@ -41,6 +41,7 @@
         </table>';
     };
 
+    /* CONSTRUCTOR TABLA DE SALIDA DE DATOS */
     function tablaOut($f){
         $filas=[];
         for ($n=0; $n < $f; $n++) { 
@@ -53,8 +54,9 @@
             $precio = filter_var($_POST["precio"][$n],FILTER_SANITIZE_NUMBER_INT);
             $impuesto = filter_var($_POST['impuesto'],FILTER_SANITIZE_NUMBER_INT)/100+1;
 
-            $subtotal[$n]= intval($precio)*intval($cantidad)*(intval($impuesto));
-
+            $subtotal[$n]= $precio*$cantidad*$impuesto;
+            
+            /* CREAR FILAS DINÁMICAS */
             $filas[$n] = 
                 '<tr>
                     <td>
@@ -71,9 +73,10 @@
                         </td>
                 </tr>';
 
-        }
+        }# fin del for
+
+        /* PLANTILLA DE LA TABLA */
         return 
-        /* TABLA */
         '<table id="tabla" class= "table table-dark text-white rounded container">
             <thead>
                 <tr>
@@ -104,9 +107,5 @@
                 </tr>
             </tbody>
         </table>';
-    };
-
-    function imprimir($algo) {
-        print $algo;
     };
 ?>
